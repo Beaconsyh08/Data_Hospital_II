@@ -1,0 +1,12 @@
+cards_conf:
+  - file_name: "/data_path/nerf_test.txt"
+    cards:
+      - card_id: 65203f778faee0d667885f2d
+        project: icu30
+        media_name: frame_sensor_data
+      - card_id: 652031690c936d8dadc3c00b
+        project: icu30
+        media_name: frame_sensor_data
+      - card_id: 652033cd8faee0d66787f414
+        project: icu30
+        media_name: frame_sensor_data
