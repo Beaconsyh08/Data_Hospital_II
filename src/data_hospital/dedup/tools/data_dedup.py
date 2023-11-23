@@ -165,8 +165,6 @@ def process_from_mid(save_root: str, method: str):
     print(f"Elapsed time: {elapsed_time} seconds")
     
 def process_df(dm, save_root: str, method: str):
-    start_time = time.time()
-    
     # Generate encodings for all images in an image directory
     encoder = initialization(method=method)
     encodings = encoder.encode_images(image_paths=list(dm.df["img_path"]))
@@ -177,6 +175,7 @@ def process_df(dm, save_root: str, method: str):
     
     files_to_remove = get_files_to_remove(duplicates)
     print("Duplicated Images: %d" % len(files_to_remove))
+    save_to_pickle(save_path="%s/duplicated_images.pkl" % save_root, pickle_obj=files_to_remove)
     
     duplicated_res = [item in files_to_remove for item in duplicates] 
     dm.add_columns([duplicated_res], ["duplicated"])

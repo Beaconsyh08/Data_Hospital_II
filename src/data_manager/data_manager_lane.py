@@ -17,14 +17,14 @@ import sys
 from abc import abstractmethod
 from multiprocessing.pool import ThreadPool
 from typing import List
-from pathlib import Path
 from data_manager.data_manager_base import DataManagerBase
+from pathlib import Path
 
 import pandas as pd
 from tqdm import tqdm
 
 
-class DataManagerNerf(DataManagerBase):
+class DataManagerLane(DataManagerBase):
     """
     Summary
     -------
@@ -66,22 +66,12 @@ class DataManagerNerf(DataManagerBase):
             with open(json_path) as input_json:
                 json_obj = json.load(input_json)
             
-            cam_objs = json_obj["camera"]
-            clip_id = json_obj["label_clip_id"]
             res_dict = dict()
+            res_dict["json_path"] = json_path
+            res_dict["img_path"] = Path(json_obj["file_path"])
             
-            if cam_objs:
-                for cam_obj in cam_objs:
-                    view_point = cam_obj["name"]
-                    if view_point in self.view_points:
-                        res_dict['view_point'] = view_point
-                        res_dict["clip_id"] = clip_id
-                        res_dict["json_path"] = json_path
-                        res_dict["img_path"] = Path("/" + cam_obj["oss_path"])
-
-                return res_dict
-            else:
-                return None
+            return res_dict
+            
         elif self.json_type == "txt_img":
             json_path = json_path if json_path[0] == "/" else "/" + json_path
             res_dict = dict()

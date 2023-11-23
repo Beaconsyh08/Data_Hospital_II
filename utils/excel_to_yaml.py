@@ -30,8 +30,9 @@ def excel_to_yaml(excel_path: str, yaml_path: str, card_col: int, name: str):
         
         
 if __name__ == '__main__':
-    name = "nerf_1017"
-    excel_path = "/root/Data_Hospital_II/data/excel/%s.xlsx" % name
-    yaml_path = "/root/Data_Hospital_II/data/yaml/%s.yaml" % name
-    card_col = 7
+    name = "pers"
+    card_col = 11
+    
+    excel_path = "/root/Data_Hospital_II/data/excel/%s.xlsx" % (name)
+    yaml_path = "/root/Data_Hospital_II/data/yaml/%s_%d.yaml" % (name, card_col)
     excel_to_yaml(excel_path=excel_path, yaml_path=yaml_path, card_col=card_col, name=name)

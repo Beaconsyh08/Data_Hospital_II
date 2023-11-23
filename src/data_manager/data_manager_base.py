@@ -186,7 +186,7 @@ class DataManagerBase:
                 
             """
 
-            if self.json_type.lower() == "txt" or self.json_type.lower() == "txt_img":
+            if self.json_type.lower() == "txt_json" or self.json_type.lower() == "txt_img":
                 json_paths = list(open(self.load_path, "r"))
             elif self.json_type.lower() == "folder":
                 json_paths = [self.load_path + "/" + _ for _ in os.listdir(self.load_path)]
